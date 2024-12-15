@@ -1,0 +1,29 @@
+<%= render "layouts/header" %>
+<h1>Admin panel</h1>
+
+<%= button_to "Генерация ключа", admin_generate_key_path, method: :post, class: 'delete-button' %>
+<%= button_to "удалить все ключи", destroy_admin_keys_path, method: :post, class: 'delete-button' %>
+
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h1>Все записи на прием</h1>
+
+<% @appointments.each do |appointment| %>
+  <div class="appointment-container">
+    <h1><%= appointment.id %></h1>
+    <h2><%= appointment.name %></h2>
+    <p><%= appointment.phone %></p>
+    <p><%= appointment.animal_type %></p>
+    <p><%= appointment.description %></p>
+    <p><%= appointment.created_at %></p>
+    <%= button_to 'Удалить', appointment_destroy_path(id: appointment.id), method: :post, class: 'delete-button' %>
+  </div>
+<% end %>
+
+

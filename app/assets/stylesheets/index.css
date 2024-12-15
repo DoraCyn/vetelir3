@@ -1,0 +1,136 @@
+/* Стили для контейнера */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Стили для секции преимуществ */
+.advantages {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.advantages h2 {
+  color: #ff6600; /* Оранжевый цвет */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.advantages ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.advantages ul li {
+  background-color: white;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для секции записи на прием */
+.appointment {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.appointment h1 {
+  color: #ff6600; /* Оранжевый цвет */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.appointment form div {
+  margin-bottom: 10px;
+}
+
+.appointment form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.appointment form input,
+.appointment form textarea,
+.appointment form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.appointment form input[type="submit"] {
+  background-color: #ff6600; /* Оранжевый цвет */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.appointment form input[type="submit"]:hover {
+  background-color: #e65c00; /* Темно-оранжевый цвет при наведении */
+}
+
+/* Стили для секции промоций */
+.promotions {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.promotions h1 {
+  color: #ff6600; /* Оранжевый цвет */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.blog-post {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 20px);
+  text-align: center;
+}
+
+.blog-post h2 {
+  color: #ff6600; /* Оранжевый цвет */
+  margin-bottom: 10px;
+}
+
+.blog-post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.blog-post p {
+  margin: 5px 0;
+}
+
+/* Стили для кнопок удаления */
+.delete-button {
+  background-color: #ff6600; /* Оранжевый цвет */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.delete-button:hover {
+  background-color: #e65c00; /* Темно-оранжевый цвет при наведении */
+}

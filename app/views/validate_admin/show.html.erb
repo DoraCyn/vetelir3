@@ -1,0 +1,10 @@
+<%= render "layouts/header" %>
+
+<h1>Проверка на админа</h1>
+
+<%= form_with model: @admin_key, url: validate_admin_path, local: true do |form| %>
+  <%= form.text_field :key %>
+  <%= form.submit "Проверить" %>
+<% end %>
+
+<%= render "layouts/footer" %>

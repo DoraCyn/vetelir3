@@ -1,0 +1,46 @@
+<%= render 'layouts/header' %>
+
+<div class="blog-container">
+  <h1>Блог</h1>
+<% if session[:admin] %>
+  <%= form_with model: @blog, multipart: true, class: 'blog-form' do |form| %>
+    <div>
+      <%= form.label :header, "Заголовок" %>
+      <%= form.text_field :header %>
+    </div>
+
+    <div>
+      <%= form.label :video, "Видео" %>
+      <%= form.file_field :video %>
+    </div>
+
+    <div>
+      <%= form.label :description, "Описание" %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div>
+      <%= form.submit "Загрузить", class: 'blog-form-submit' %>
+    </div>
+  <% end %>
+<% end %>
+
+  <% @blogs.each do |blog| %>
+    <div class="blog-post">
+      <h2><%= blog.header %></h2>
+      <% if blog.video.attached? %>
+        <video controls width="640" height="360">
+          <source src="<%= url_for(blog.video) %>" type="<%= blog.video.content_type %>">
+        </video>
+        <h3><%= blog.description %></h3>
+      <% else %>
+        <p>Видео не загружено.</p>
+      <% end %>
+      <% if session[:admin] %>
+      <%= button_to 'Удалить', blog_path(blog), method: :delete, class: 'delete-button' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'layouts/footer' %>

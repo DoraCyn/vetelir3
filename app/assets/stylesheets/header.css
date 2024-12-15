@@ -1,0 +1,45 @@
+/* Стили для шапки */
+header {
+    background-color: #ff6600; /* Оранжевый цвет */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .contacts p {
+    margin: 5px 0;
+  }
+  
+  .buttons button {
+    background-color: #ff6600; /* Оранжевый цвет */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .buttons button:hover {
+    background-color: #e65c00; /* Темно-оранжевый цвет при наведении */
+  }
+  
+  .buttons button a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .buttons button a:hover {
+    text-decoration: underline;
+  }
+  

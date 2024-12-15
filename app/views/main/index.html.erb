@@ -1,0 +1,132 @@
+<%= render "layouts/header" %>
+
+<div class="container">
+  <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
+
+  <section class="advantages">
+    <h2>Наши преимущества</h2>
+    <ul>
+      <li>Опытные врачи</li>
+      <li>Современное оборудование</li>
+      <li>Удобное расположение</li>
+      <li>Индивидуальный подход</li>
+    </ul>
+  </section>
+
+  <section class="appointment">
+    <% if session[:admin] %>
+      <%= form_with model: @website_service, url: website_services_path, local: true, multipart: true do |form| %>
+        <div>
+          <%= form.label :header, "Заголовок" %>
+          <%= form.text_field :header %>
+        </div>
+        <div>
+          <%= form.label :img, "Картинка" %>
+          <%= form.file_field :img %>
+        </div>
+        <div>
+          <%= form.label :types_of_services_id, "Тип услуги" %>
+          <%= form.select :types_of_services_id, options_for_select([['Услуга', 1], ['Товар', 2], ['Акция', 3]], @website_service.types_of_services_id) %>
+        </div>
+        <div>
+          <%= form.submit "Загрузить" %>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="promotions">
+    <h1>Услуга</h1>
+    <div class="service-grid">
+      <% @website_services.each do |service| %>
+        <% if service.types_of_services_id == 1 %>
+          <div class="blog-post">
+            <h2><%= service.header %></h2>
+            <% if service.img.attached? %>
+              <%= image_tag url_for(service.img), alt: service.header %>
+            <% else %>
+              <p>Изображение не загружено.</p>
+            <% end %>
+            <!-- Удаление записи -->
+            <% if session[:admin] %>
+              <%= button_to 'Удалить', website_service_path(service.id), method: :delete, class: 'delete-button', data: { confirm: "Вы уверены?" } %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="promotions">
+    <h1>Товар</h1>
+    <div class="service-grid">
+      <% @website_services.each do |service| %>
+        <% if service.types_of_services_id == 2 %>
+          <div class="blog-post">
+            <h2><%= service.header %></h2>
+            <% if service.img.attached? %>
+              <%= image_tag url_for(service.img), alt: service.header %>
+            <% else %>
+              <p>Изображение не загружено.</p>
+            <% end %>
+            <!-- Удаление записи -->
+            <% if session[:admin] %>
+              <%= button_to 'Удалить', website_service_path(service.id), method: :delete, class: 'delete-button', data: { confirm: "Вы уверены?" } %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="promotions">
+    <h1>Акция</h1>
+    <div class="service-grid">
+      <% @website_services.each do |service| %>
+        <% if service.types_of_services_id == 3 %>
+          <div class="blog-post">
+            <h2><%= service.header %></h2>
+            <% if service.img.attached? %>
+              <%= image_tag url_for(service.img), alt: service.header %>
+            <% else %>
+              <p>Изображение не загружено.</p>
+            <% end %>
+            <!-- Удаление записи -->
+            <% if session[:admin] %>
+              <%= button_to 'Удалить', website_service_path(service.id), method: :delete, class: 'delete-button', data: { confirm: "Вы уверены?" } %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="appointment">
+    <h1>Записаться на прием</h1>
+    <%= form_with model: @appointment, url: appointment_create_path, local: true do |form| %>
+      <div>
+        <%= form.label :name, "Ваше имя" %>
+        <%= form.text_field :name %>
+      </div>
+      <div>
+        <%= form.label :phone, "Ваш телефон" %>
+        <%= form.telephone_field :phone %>
+      </div>
+      <div>
+        <%= form.label :animal_type, "Вид животного" %>
+        <%= form.text_field :animal_type %>
+      </div>
+      <div>
+        <%= form.label :description, "Описание проблемы" %>
+        <%= form.text_area :description %>
+      </div>
+      <div>
+        <%= form.submit "Записаться" %>
+      </div>
+    <% end %>
+  </section>
+</div>
+
+<%= render "layouts/footer" %>
