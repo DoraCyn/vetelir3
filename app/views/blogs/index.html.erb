@@ -6,12 +6,12 @@
   <%= form_with model: @blog, multipart: true, class: 'blog-form' do |form| %>
     <div>
       <%= form.label :header, "Заголовок" %>
-      <%= form.text_field :header %>
+      <%= form.text_field :header, required: true %>
     </div>
 
     <div>
       <%= form.label :video, "Видео" %>
-      <%= form.file_field :video %>
+      <%= form.file_field :video, required: true %>
     </div>
 
     <div>

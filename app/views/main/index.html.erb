@@ -1,3 +1,4 @@
+
 <%= render "layouts/header" %>
 
 <div class="container">
@@ -5,26 +6,25 @@
     <div class="alert"><%= flash[:alert] %></div>
   <% end %>
 
-  <section class="advantages">
-    <h2>Наши преимущества</h2>
-    <ul>
-      <li>Опытные врачи</li>
-      <li>Современное оборудование</li>
-      <li>Удобное расположение</li>
-      <li>Индивидуальный подход</li>
-    </ul>
-  </section>
+<section class="advantages">
+  <h2>Наши преимущества</h2>
+  <div class="circle">Образованные врачи</div>
+  <div class="circle">Современное оборудование</div>
+  <div class="circle">Удобное расположение</div>
+  <div class="circle">Индивидуальный подход</div>
+</section>
+
 
   <section class="appointment">
     <% if session[:admin] %>
       <%= form_with model: @website_service, url: website_services_path, local: true, multipart: true do |form| %>
         <div>
           <%= form.label :header, "Заголовок" %>
-          <%= form.text_field :header %>
+          <%= form.text_field :header, required: true %>
         </div>
         <div>
           <%= form.label :img, "Картинка" %>
-          <%= form.file_field :img %>
+          <%= form.file_field :img, required: true %>
         </div>
         <div>
           <%= form.label :types_of_services_id, "Тип услуги" %>
@@ -103,24 +103,24 @@
     </div>
   </section>
 
-  <section class="appointment">
+  <section class="appointment" id="appointment">
     <h1>Записаться на прием</h1>
     <%= form_with model: @appointment, url: appointment_create_path, local: true do |form| %>
       <div>
         <%= form.label :name, "Ваше имя" %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name, required: true %>
       </div>
       <div>
         <%= form.label :phone, "Ваш телефон" %>
-        <%= form.telephone_field :phone %>
+        <%= form.telephone_field :phone, required: true %>
       </div>
       <div>
         <%= form.label :animal_type, "Вид животного" %>
-        <%= form.text_field :animal_type %>
+        <%= form.text_field :animal_type, required: true %>
       </div>
       <div>
         <%= form.label :description, "Описание проблемы" %>
-        <%= form.text_area :description %>
+        <%= form.text_area :description, required: true %>
       </div>
       <div>
         <%= form.submit "Записаться" %>

@@ -3,8 +3,6 @@
 <h1>Проверка на админа</h1>
 
 <%= form_with model: @admin_key, url: validate_admin_proverk_path, local: true do |form| %>
-  <%= form.text_field :key %>
+  <%= form.text_field :key, placeholder: "Введите ключ" %>
   <%= form.submit "Проверить" %>
 <% end %>
-
-<%= render "layouts/footer" %>
